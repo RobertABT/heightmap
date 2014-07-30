@@ -7,7 +7,7 @@ from pylab import imread
 from scipy.ndimage import gaussian_filter
 from stl_tools import numpy2stl
 
-usrselectedcoords = input("Please enter desired Ordnance Survey map reference to be used: ")
+usrselectedcoords = raw_input("Please enter desired Ordnance Survey map reference to be used: ")
 
 r = region.Region()
 r.readgr (usrselectedcoords)
