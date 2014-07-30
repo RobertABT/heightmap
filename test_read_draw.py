@@ -1,3 +1,4 @@
+import region
 class Region:
 	llx = 0
 	lly = 0
@@ -5,8 +6,8 @@ class Region:
 	ncols = 3
 	step = 50
 	gridx = [1,2,3]
-	gridy = [2,3,4]
-	gridz = [3,4,5]
+	gridy = [1,2,3]
+	gridz = [3,2,1]
 	def read (self, filename):
 		# set the variables from a file
 		pass
