@@ -23,15 +23,11 @@ class Region:
         file.close
         self.grid = loadtxt(filename, skiprows=5)
 
+
     def readgr(self, gridsqr):
         thepath = "data/"
-        thefile = thepast + gridsqr[0:2] + ".asc"
-        print self.thefile
-        
-        
-        
-        #self.read(thepath)
-        
+        thepath = thepath + gridsqr[0:3] + gridsqr[5] + ".asc"
+        print(thepath)
 
 
 thisone = Region()
@@ -40,5 +36,5 @@ thisone = Region()
 thisone.readgr("SN942942")
 
 #print thisone.grid.size
-print thisone.grid[0][0]
+#print thisone.grid[0][0]
 
