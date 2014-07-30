@@ -6,6 +6,7 @@ class Region:
     ncols = 3  #<-- a
     step = 50
     grid = [[1,2,3], [4,5,6], [3,8,9] ]
+
     def read (self, filename):
         file = open(filename,'r')
         a = file.readline().split()
@@ -22,11 +23,22 @@ class Region:
         file.close
         self.grid = loadtxt(filename, skiprows=5)
 
+    def readgr(self, gridsqr):
+        thepath = "data/"
+        thefile = thepast + gridsqr[0:2] + ".asc"
+        print self.thefile
+        
+        
+        
+        #self.read(thepath)
+        
+
 
 thisone = Region()
 
-thisone.read("ascii grid 5/SX99SW.asc")
+#thisone.read("ascii grid 5/SX99SW.asc")
+thisone.readgr("SN942942")
 
-print thisone.grid.size
+#print thisone.grid.size
 print thisone.grid[0][0]
 
