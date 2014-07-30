@@ -7,8 +7,10 @@ from pylab import imread
 from scipy.ndimage import gaussian_filter
 from stl_tools import numpy2stl
 
+usrselectedcoords = input("Please enter desired Ordnance Survey map reference to be used: ")
+
 r = region.Region()
-r.readgr ("SN400200")
+r.readgr (usrselectedcoords)
 
 print "Generating STL file from map data..."
 
