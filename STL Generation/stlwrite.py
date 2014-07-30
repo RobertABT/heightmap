@@ -9,10 +9,9 @@ def write():
 
     try:
             with open('MAPDATA.stl', 'a') as f2:
-                file = open('enddata.whatever', 'r')
+#Convert map data to .stl format here, need the map data to start working.
                 f2.write("solid model\n" + file.read() +"\n" + "endsolidmodel")
 
-#Oooh, notes. Cool.
     except:
         print('File creation error. Closing Python.')
         sys.exit(0)
