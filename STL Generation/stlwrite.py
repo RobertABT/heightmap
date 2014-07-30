@@ -72,7 +72,8 @@ def write():
                                                      "vertex 100.0 5.0 0.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
                                                 #^ This is for the 4 sides
-                         
+
+                                                #Insert map generation code here
                                                 "endsolidmodel")
                 
 
