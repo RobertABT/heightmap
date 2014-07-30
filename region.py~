@@ -25,7 +25,7 @@ class Region:
 
     def readgr(self, gridsqr):
         thepath = "data/"
-        thefile = thepath + gridsqr[0:2] + ".asc"
+        thefile = thepast + gridsqr[0:2] + ".asc"
         print self.thefile
         
         
