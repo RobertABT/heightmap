@@ -7,8 +7,13 @@ class Region:
     step = 50
     grid = [[1,2,3], [4,5,6], [3,8,9] ]
 
+    #Reading files, retrieving integers and creating an array.
     def read (self, filename):
-        file = open(filename,'r')
+        try:
+            file = open(filename,'r')
+        except:
+            print("no such file")
+            return False
         a = file.readline().split()
         self.ncols = int(a[1])
         b = file.readline().split()
@@ -22,19 +27,40 @@ class Region:
 
         file.close
         self.grid = loadtxt(filename, skiprows=5)
+        return True
 
-
+    #Retrieving files according to grid references.
     def readgr(self, gridsqr):
         thepath = "data/"
         thepath = thepath + gridsqr[0:3] + gridsqr[5] + ".asc"
-        print(thepath)
+        self.read(thepath)
 
+#Defining global variable.
+region = Region()
 
-thisone = Region()
+#Users input
+region.readgr("SN942935")
 
-#thisone.read("ascii grid 5/SX99SW.asc")
-thisone.readgr("SN942942")
+if __name__ == "__main__":
+    #Printing values.
+    print("------------")
+    print(region.xllc)
+    print("xllcorner")
 
-#print thisone.grid.size
-#print thisone.grid[0][0]
+    print("------------")
+
+    print(region.yllc)
+    print("yllcorner")
+
+    print("------------")
+
+    print(region.ncols)
+    print("ncolumns")
+
+    print("------------")
+
+    print(region.nrows)
+    print("nrows")
+
+    print("------------")
 
