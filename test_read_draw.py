@@ -21,5 +21,5 @@ print thatone.step
 # View it.
 from mayavi import mlab
 s = mlab.surf(thatone.grid[0:]/10)
-print thatone.grid[0:]/10
+#print thatone.grid[0:]/10 #shows file height data divided by ten
 mlab.show()
