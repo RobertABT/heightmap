@@ -1,3 +1,18 @@
-just a text file to add social media links to to make collabaration easier
-https://www.facebook.com/rbterrey
-@robertarhturbt on twitter
+Just a text file to add social media links to to make collaboration easier.
+
+Robert:
+-----------------------------------
+Facebook: https://www.facebook.com/rbterrey
+Twitter: @RobertArthurBT
+-----------------------------------
+
+Linus:
+-----------------------------------
+Twitter: @TheLinooosMan
+Skype: LinusKirkwoodSkype
+-----------------------------------
+
+Fierdia:
+-----------------------------------
+
+-----------------------------------
