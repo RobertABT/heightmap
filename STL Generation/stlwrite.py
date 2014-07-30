@@ -12,13 +12,13 @@ def write():
                 f2.write("solid model" + '\n' + ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
                                                      "vertex 100.0 0.0 0.0" + '\n' +
                                                      "vertex 0.0 0.0 0.0" + '\n' +
-                                                     "vertex 0.0 0.0 100.0" + '\n' +
+                                                     "vertex 0.0 100.0 0.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
                          
                                                 ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
                                                      "vertex 100.0 0.0 0.0" + '\n' +
-                                                     "vertex 100.0 0.0 100.0" + '\n' +
-                                                     "vertex 0.0 0.0 100.0" + '\n' +
+                                                     "vertex 100.0 100.0 0.0" + '\n' +
+                                                     "vertex 0.0 100.0 0.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
                         
                                                 #^ This is for the two triangles of the bottom plane.
@@ -26,51 +26,53 @@ def write():
                                                 
                                                 ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
                                                      "vertex 0.0 0.0 0.0" + '\n' +
-                                                     "vertex 100.0 0.0 0.0" + '\n' +
-                                                     "vertex 0.0 5.0 0.0" + '\n' +
+                                                     "vertex 0.0 100.0 0.0" + '\n' +
+                                                     "vertex 0.0 0.0 5.0" + '\n' +
+                                                 "endloop" + '\n' + "endfacet") + '\n' +
+                         
+                                                ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
+                                                     "vertex 0.0 0.0 5.0" + '\n' +
+                                                     "vertex 0.0 100.0 0.0" + '\n' +
+                                                     "vertex 0.0 100.0 5.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
                          
                                                 ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
                                                      "vertex 0.0 0.0 0.0" + '\n' +
                                                      "vertex 100.0 0.0 0.0" + '\n' +
-                                                     "vertex 100.0 5.0 0.0" + '\n' +
+                                                     "vertex 0.0 0.0 5.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
                          
                                                 ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
-                                                     "vertex 0.0 0.0 0.0" + '\n' +
-                                                     "vertex 0.0 0.0 100.0" + '\n' +
-                                                     "vertex 0.0 5.0 0.0" + '\n' +
+                                                     "vertex 0.0 0.0 5.0" + '\n' +
+                                                     "vertex 100.0 0.0 0.0" + '\n' +
+                                                     "vertex 100.0 0.0 5.0" + '\n' +
+                                                 "endloop" + '\n' + "endfacet") + '\n' +
+                         
+                                                ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
+                                                     "vertex 100.0 100.0 5.0" + '\n' +
+                                                     "vertex 100.0 100.0 0.0" + '\n' +
+                                                     "vertex 100.0 0.0 0.0" + '\n' +
+                                                 "endloop" + '\n' + "endfacet") + '\n' +
+                         
+                                                ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
+                                                     "vertex 100.0 100.0 5.0" + '\n' +
+                                                     "vertex 100.0 0.0 0.0" + '\n' +
+                                                     "vertex 100.0 0.0 5.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
 
                                                 ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
-                                                     "vertex 0.0 0.0 0.0" + '\n' +
-                                                     "vertex 0.0 0.0 100.0" + '\n' +
-                                                     "vertex 0.0 5.0 100.0" + '\n' +
+                                                     "vertex 0.0 100.0 5.0" + '\n' +
+                                                     "vertex 0.0 100.0 0.0" + '\n' +
+                                                     "vertex 100.0 100.0 0.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
                          
                                                 ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
-                                                     "vertex 100.0 0.0 100.0" + '\n' +
-                                                     "vertex 0.0 0.0 100.0" + '\n' +
-                                                     "vertex 100.0 5.0 100.0" + '\n' +
+                                                     "vertex 100.0 100.0 5.0" + '\n' +
+                                                     "vertex 100.0 100.0 0.0" + '\n' +
+                                                     "vertex 0.0 100.0 5.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
-                         
-                                                ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
-                                                     "vertex 100.0 0.0 100.0" + '\n' +
-                                                     "vertex 0.0 0.0 100.0" + '\n' +
-                                                     "vertex 0.0 5.0 100.0" + '\n' +
-                                                 "endloop" + '\n' + "endfacet") + '\n' +
-                         
-                                                ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
-                                                     "vertex 100.0 0.0 100.0" + '\n' +
-                                                     "vertex 100.0 0.0 0.0" + '\n' +
-                                                     "vertex 0.0 5.0 100.0" + '\n' +
-                                                 "endloop" + '\n' + "endfacet") + '\n' +
-                         
-                                                ("facet normal 0.0 0.0 0.0" + '\n' "outer loop" + '\n' +
-                                                     "vertex 100.0 0.0 100.0" + '\n' +
-                                                     "vertex 100.0 0.0 0.0" + '\n' +
-                                                     "vertex 100.0 5.0 0.0" + '\n' +
-                                                 "endloop" + '\n' + "endfacet") + '\n' +
+
+
                                                 #^ This is for the 8 triangles on the 4 sides.
                                                 #Insert map generation code here
                                                 "endsolidmodel")
