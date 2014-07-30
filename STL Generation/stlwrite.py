@@ -2,16 +2,6 @@
 #I strongly believe the .whatever format should be universal...
 import sys
 
-class Region:
-    xllc = 0
-    yllc = 0
-    nrows = 3
-    ncols = 3
-    step = 50
-    grid = [[1,2,3], [4,5,6], [3,8,9]]
-
-    thisone = Region()
-
 def write():
     print "Generating STL file from map data..."
 
@@ -81,7 +71,7 @@ def write():
                                                      "vertex 100.0 0.0 0.0" + '\n' +
                                                      "vertex 100.0 5.0 0.0" + '\n' +
                                                  "endloop" + '\n' + "endfacet") + '\n' +
-                                                #^ This is for the 4 sides
+                                                #^ This is for the 8 triangles on the 4 sides.
                                                 #Insert map generation code here
                                                 "endsolidmodel")
                 
