@@ -2,6 +2,16 @@
 #I strongly believe the .whatever format should be universal...
 import sys
 
+class Region:
+    xllc = 0
+    yllc = 0
+    nrows = 3
+    ncols = 3
+    step = 50
+    grid = [[1,2,3], [4,5,6], [3,8,9]]
+
+    thisone = Region()
+
 def write():
     print "Generating STL file from map data..."
 
