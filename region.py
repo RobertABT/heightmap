@@ -32,26 +32,20 @@ class Region:
     #Retrieving files according to grid references.
     def readgr(self, gridsqr):
         thepath = "data/"
-<<<<<<< HEAD
         thepath = thepath + gridsqr[0:3] + gridsqr[5] + ".asc"
         self.read(thepath)
-=======
-        thefile = thepath + gridsqr[0:2] + ".asc"
-        print self.thefile
-        
-        
-        
-        #self.read(thepath)
-        
->>>>>>> d53e0f8ca7ca32793be3fc7f0844d81bad5b502d
 
-#Defining global variable.
-region = Region()
+    
 
-#Users input
-region.readgr("SN942935")
 
 if __name__ == "__main__":
+    
+    #Defining global variable.
+    region = Region()
+
+    #Users input
+    region.readgr("SN942935")
+    
     #Printing values.
     print("------------")
     print(region.xllc)
