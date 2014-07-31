@@ -35,16 +35,22 @@ class Region:
 
     #Retrieving files according to grid references.
     def readgr(self, gridsqr):
+        gridsqr = gridsqr.replace(" ","")
         thepath = "data/" + gridsqr[0:3].upper()
-        if len(gridsqr) > 8:
+        if len(gridsqr) > 12:
             thepath = None
         
+        elif len(gridsqr) == 12:
+            thepath = thepath + gridsqr[7]
+
+        elif len(gridsqr) == 10:
+            thepath = thepath + gridsqr[6]
+
         elif len(gridsqr) == 8:
             thepath = thepath + gridsqr[5]
             
         elif len(gridsqr) == 6:
-            print("gridsqr is 6")
-            thepath = thepath + gridsqr
+            thepath = thepath + gridsqr[4]
             
         elif len(gridsqr) == 4:
             thepath = thepath + gridsqr[3]
@@ -63,7 +69,7 @@ if __name__ == "__main__":
     #Defining global variable.
     region = Region()
     #Users input
-    region.readgr("SN1234567")
+    region.readgr("SN4356743567")
     
     #Printing values.
     print("------------")
