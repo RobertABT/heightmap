@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Postcode</title>
+	<script type="text/javascript" src="assets/js/jsc3d.js"></script>
+	<script type="text/javascript" src="assets/js/jsc3d.webgl.js"></script>
+	<script type="text/javascript" src="assets/js/jsc3d.3ds.js"></script>
+	<script type="text/javascript" src="assets/js/jsc3d.touch.js"></script>
+  </head>
+  <body>
+    <h1>View of your area</h1>
+
+    <p>!!!! need some instructions for manipulating the image here !!!!</p>
+<div style="width:368px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
+		<canvas id="cv" style="border: 1px solid;" width="368" height="490" ></canvas>
+	</div>
+<script type="text/javascript">
+
+var canvas = document.getElementById('cv');
+var viewer = new JSC3D.Viewer(canvas);
+viewer.setParameter('SceneUrl', 'GENERATED.stl');
+viewer.setParameter('RenderMode', 'flat');
+viewer.init();
+viewer.update();
+
+</script>
+    <form action="/download" method="post"> 
+       <p><input type="submit" value="Download STL file"/></p>
+     </form>
+
+     <p><a href="index.html">Retry another area</a></p>
+  </body>
+</html>
