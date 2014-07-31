@@ -6,7 +6,7 @@ import region
 from pylab import imread
 from scipy.ndimage import gaussian_filter
 from stl_tools import numpy2stl
-
+print 'Format required is as HP400000 not hp40'
 usrselectedcoords = raw_input("Please enter desired Ordnance Survey map reference to be used: ")
 
 r = region.Region()
