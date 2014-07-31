@@ -22,6 +22,7 @@ app.post('/submit', function(req, res){
   var input = req.body.text.area;
   var api = "http://www.nearby.org.uk/api/convert.php?key=5103caf756c8b6&p=";
   var gridCode;
+  var result;
 
   http.get(api + input, function(res){
     var body = '';
@@ -31,7 +32,8 @@ app.post('/submit', function(req, res){
     });
 
     res.on('end', function() {
-        gridCode = result.convert.output[0].gr10[0].$.gr10;
+      parseString(body, function (err, result) {
+	gridCode = result.convert.output[0].gr10[0].$.gr10;
 	gridCode = gridCode.replace(/ /g,'');
 	fs.exists('generated/GENERATED_' + gridCode + '.stl', function(exists) {
 	  if (!exists) {
