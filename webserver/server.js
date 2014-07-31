@@ -44,7 +44,7 @@ io.sockets.on('connection', function (socket) {
 	parseString(body, function (err, result) {
 	  gridCode = result.convert.output[0].gr10[0].$.gr10;
 	  gridCode = gridCode.replace(/ /g,'');
-	  fs.exists('generated/GENERATED_' + gridCode + '.stl', function(exists) {
+	  fs.exists('public/generated/GENERATED_' + gridCode + '.stl', function(exists) {
 	    if (!exists) {
 	      child = exec('cd python; python2 webstlwrite.py ' + gridCode, function(error, stdout, stderr) {
 	        socket.emit('generated',{'fileName' : gridCode});
@@ -74,7 +74,7 @@ app.get('/preview', function(req, res) {
 
 app.get('/download', function(req, res) {
   // res.redirect('/get?id=GENERATED_' + gridCode); gridCode can't be accessed
-  var file = 'generated/' + req.param('id') + '.stl';
+  var file = 'public/generated/' + req.param('id') + '.stl';
 
   var filename = path.basename(file);
   var mimetype = mime.lookup(file);

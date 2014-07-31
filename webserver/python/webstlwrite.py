@@ -13,6 +13,6 @@ usrselectedcoords = sys.argv[1]
 r = region.Region()
 r.readgr (usrselectedcoords)
 
-filename = str('../generated/GENERATED_' + usrselectedcoords + '.stl')
+filename = str('../public/generated/GENERATED_' + usrselectedcoords + '.stl')
 numpy2stl(r.grid,filename, solid=True)
 
