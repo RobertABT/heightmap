@@ -1,0 +1,7 @@
+Demo of using JSC3D to view stl files in a web page
+
+     - JSC3D is at https://code.google.com/p/jsc3d/
+     - this directory has the required downloads
+     - t.html is an example page which displays GENERATED.stl
+       - that filename is hard coded into the html
+     - there will be more parameters to all this I am sure

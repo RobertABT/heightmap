@@ -69,7 +69,7 @@ if __name__ == "__main__":
     #Defining global variable.
     region = Region()
     #Users input
-    region.readgr("SN4356743567")
+    region.readgr("SN 43567 43567")
     
     #Printing values.
     print("------------")

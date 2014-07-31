@@ -31,8 +31,6 @@ app.post('/submit', function(req, res){
     });
 
     res.on('end', function() {
-      parseString(body, function (err, result) {
-
         gridCode = result.convert.output[0].gr10[0].$.gr10;
 	gridCode = gridCode.replace(/ /g,'');
 	fs.exists('generated/GENERATED_' + gridCode + '.stl', function(exists) {
