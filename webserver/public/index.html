@@ -1,14 +1,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>HeightMap2STL</title>
+        <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('/');
+      socket.on('generated', function(data){
+        alert(data.fileName);
+        window.location.href="/get?id=GENERATED_" + data.fileName 
+      });
+      function submitPostCode() {
+        socket.emit('postCode', {'code':document.getElementById('postcode').value});
+      }
+    </script>
   </head>
   <body>
-    <form action="/submit" method="post"> 
+    <form id="form1" onSubmit="return false"> 
       <p>!!!! NEED some explanation here !!!!!</p>
-       <p>Enter the postcode:       <input type="text" name="text[area]"/></p>
-       <p><em>or</em> Enter an OS grid reference <input type="text" name="OSgridref"/></p>
-       <p>Provide a vertical scale value (5 is good): <input type="text" name="scale" value="5" size="5" /></p>
-       <p><input type="submit" value="Submit"/></p>
+       <p>Enter the postcode:       <input type="text" id="postcode"/></p>
+       <!--<p><em>or</em> Enter an OS grid reference <input type="text" name="OSgridref"/></p>
+       <p>Provide a vertical scale value (5 is good): <input type="text" name="scale" value="5" size="5" /></p>-->
+       <p><input type="submit" onClick="submitPostCode()" value="Submit"/></p>
      </form>
   </body>
 </html>

@@ -7,6 +7,7 @@ var express = require('express'),
        mime = require('mime'),
          fs = require('fs'),
 parseString = require('xml2js').parseString,
+	 io = require('socket.io').listen(server),
       child;
 
 server.listen(80);
@@ -19,42 +20,55 @@ app.configure(function () {
 });
 
 app.post('/submit', function(req, res){
-  var input = req.body.text.area;
-  var api = "http://www.nearby.org.uk/api/convert.php?key=5103caf756c8b6&p=";
-  var gridCode;
-  var result;
-
-  http.get(api + input, function(res){
-    var body = '';
-
-    res.on('data', function(chunk) {
-	body += chunk;
-    });
-
-    res.on('end', function() {
-      parseString(body, function (err, result) {
-	gridCode = result.convert.output[0].gr10[0].$.gr10;
-	gridCode = gridCode.replace(/ /g,'');
-	fs.exists('generated/GENERATED_' + gridCode + '.stl', function(exists) {
-	  if (!exists) {
-	    child = exec('cd python; python2 webstlwrite.py ' + gridCode, function(error, stdout, stderr) {
-	      if (error !== null) {
-		console.log('exec error: ' + error);
-	      }
-	    });
-	  }
-	});
-      });
-    });
-  }).on('error', function(e) {
-    console.log("Got error: ", e);
-  });
-
-  // res.redirect('/get?id=GENERATED_' + gridCode); gridCode can't be accessed
 
 });
 
+io.sockets.on('connection', function (socket) {
+  console.log(socket.id + " connected.");
+
+
+  socket.on('postCode', function(data) {
+    var input = data.code;
+    var api = "http://www.nearby.org.uk/api/convert.php?key=5103caf756c8b6&p=";
+    var gridCode;
+    var result;
+
+    http.get(api + input, function(res){
+      var body = '';
+
+      res.on('data', function(chunk) {
+	  body += chunk;
+      });
+
+      res.on('end', function() {
+	parseString(body, function (err, result) {
+	  gridCode = result.convert.output[0].gr10[0].$.gr10;
+	  gridCode = gridCode.replace(/ /g,'');
+	  fs.exists('generated/GENERATED_' + gridCode + '.stl', function(exists) {
+	    if (!exists) {
+	      child = exec('cd python; python2 webstlwrite.py ' + gridCode, function(error, stdout, stderr) {
+	        socket.emit('generated',{'fileName' : gridCode});
+                return;
+	      });
+	    } else {
+	      socket.emit('generated',{'fileName' : gridCode});
+            }
+	  });
+	});
+      });
+    }).on('error', function(e) {
+      console.log("Got error: ", e);
+    });
+
+    });
+
+    socket.on('disconnect', function() {
+      console.log(socket.id + " disconnected.");
+    });
+});
+
 app.get('/get', function(req, res) {
+  // res.redirect('/get?id=GENERATED_' + gridCode); gridCode can't be accessed
   var file = 'generated/' + req.param('id') + '.stl';
 
   var filename = path.basename(file);
@@ -66,3 +80,4 @@ app.get('/get', function(req, res) {
   var filestream = fs.createReadStream(file);
   filestream.pipe(res);
 });
+
