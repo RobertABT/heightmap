@@ -13,7 +13,7 @@ r = region.Region()
 r.readgr (usrselectedcoords)
 
 print "Generating STL file from map data..."
+filename = str('GENERATED_' + usrselectedcoords + '.stl')
+numpy2stl(r.grid,filename, solid=True)
 
-numpy2stl(r.grid,"GENERATED.stl", solid=True)
-
-print "Done! GENERATED.stl is now ready to print!"
+print 'Done! ' + filename + '.stl is now ready to print!'
