@@ -1,5 +1,3 @@
-var express = require('express'),
-        app = express(),
      server = require('http').createServer(app),
        exec = require('child_process').exec,
        path = require('path'),
@@ -29,6 +27,7 @@ app.post('/submit', function(req, res){
 
     res.on('end', function() {
       // parseXML here
+      console.log(body);
 
 
     });
