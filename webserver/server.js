@@ -18,6 +18,27 @@ app.configure(function () {
 
 app.post('/submit', function(req, res){
   var input = req.body.text.area;
+  var api = "http://www.nearby.org.uk/api/convert.php?key=5103caf756c8b6&p=";
+
+  http.get(api + input, function(res){
+    var body = '';
+
+    res.on('data', function(chunk) {
+	body += chunk;
+    });
+
+    res.on('end', function() {
+      // parseXML here
+
+
+    });
+  }).on('error', function(e) {
+    console.log("Got error: ", e);
+  });
+
+  return
+
+
   fs.exists('generated/GENERATED_' + input + '.stl', function(exists) {
     if (exists) {
       res.redirect('/get?id=GENERATED_' + req.body.text.area);
