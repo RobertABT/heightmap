@@ -1,0 +1,13 @@
+setup.cfg
+setup.py
+stl_tools/__init__.py
+stl_tools/cwrapped.c
+stl_tools/image2stl.py
+stl_tools/numpy2stl.py
+stl_tools/text2png.py
+stl_tools.egg-info/PKG-INFO
+stl_tools.egg-info/SOURCES.txt
+stl_tools.egg-info/dependency_links.txt
+stl_tools.egg-info/entry_points.txt
+stl_tools.egg-info/requires.txt
+stl_tools.egg-info/top_level.txt

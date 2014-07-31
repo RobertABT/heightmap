@@ -1,0 +1,3 @@
+[console_scripts]
+image2stl = stl_tools.image2stl:image2stl
+
