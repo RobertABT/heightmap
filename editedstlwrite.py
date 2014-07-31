@@ -21,4 +21,4 @@ mlab.show()
 filename = str('GENERATED_' + usrselectedcoords +'.stl')
 numpy2stl(r.grid/10,(filename), solid=True)
 
-print ('Done!' + filename + ' is now ready to print!')
+print ('Done! ' + filename + ' is now ready to print!')
