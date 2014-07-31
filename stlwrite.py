@@ -8,6 +8,7 @@ from scipy.ndimage import gaussian_filter
 from stl_tools import numpy2stl
 usrselectedcoords = raw_input("Please enter desired Ordnance Survey map reference to be used: ")
 usrselectedcoords = usrselectedcoords.replace(" ","")
+usrselectedcoords = usrselectedcoords.upper()
 
 r = region.Region()
 r.readgr (usrselectedcoords)
