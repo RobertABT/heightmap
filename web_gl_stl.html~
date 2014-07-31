@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>three.js webgl - STL</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <style>
+            body {
+                font-family: Monospace;
+                background-color: #000000;
+                margin: 0px;
+                overflow: hidden;
+            }
+
+            #info {
+                color: #fff;
+                position: absolute;
+                top: 10px;
+                width: 100%;
+                text-align: center;
+                z-index: 100;
+                display:block;
+
+            }
+
+            a { color: skyblue }
+        </style>
+    </head>
+    <body>
+        <div id="info">
+            STL loader test
+        </div>
+
+        <script src="three.min.js"></script>
+
+        <script src="STLLoader.js"></script>
+
+        <script>
+
+            var container, camera, scene, renderer;
+
+            init();
+            animate();
+
+            function init() {
+
+                container = document.createElement( 'div' );
+                document.body.appendChild( container );
+
+                camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 10000 );
+                camera.position.set( 3, 0.5, 3 );
+
+                scene = new THREE.Scene();
+
+                // object
+
+                var loader = new THREE.STLLoader();
+                loader.addEventListener( 'load', function ( event ) {
+
+                    var geometry = event.content;
+
+                    var material = new THREE.MeshLambertMaterial( { ambient: 0xff5533, color: 0xff5533 } );
+
+                    var mesh = new THREE.Mesh( geometry, material );
+
+                    scene.add( mesh );
+
+                } );
+                loader.load( 'slotted_disk.stl' );
+
+                // lights
+
+                scene.add( new THREE.AmbientLight( 0x222222 ) );
+
+                var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+                directionalLight.position = camera.position;
+                scene.add( directionalLight );
+
+                // renderer
+
+                renderer = new THREE.WebGLRenderer( { antialias: true } );
+                renderer.setSize( window.innerWidth, window.innerHeight );
+
+                container.appendChild( renderer.domElement );
+
+                window.addEventListener( 'resize', onWindowResize, false );
+
+            }
+
+            function addLight( x, y, z, color, intensity ) {
+
+                var directionalLight = new THREE.DirectionalLight( color, intensity );
+                directionalLight.position.set( x, y, z )
+                scene.add( directionalLight );
+
+            }
+
+            function onWindowResize() {
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+
+                camera.updateProjectionMatrix();
+
+                renderer.setSize( window.innerWidth, window.innerHeight );
+
+            }
+
+            function animate() {
+
+                requestAnimationFrame( animate );
+
+                render();
+
+            }
+
+            function render() {
+
+                var timer = Date.now() * 0.0005;
+
+                camera.position.x = Math.cos( timer ) * 5;
+                camera.position.z = Math.sin( timer ) * 5;
+
+                camera.lookAt( scene.position );
+
+                renderer.render( scene, camera );
+
+            }
+
+        </script>
+    </body>
+</html>
