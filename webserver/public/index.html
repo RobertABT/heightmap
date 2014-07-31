@@ -5,8 +5,7 @@
     <script>
       var socket = io.connect('/');
       socket.on('generated', function(data){
-        alert(data.fileName);
-        window.location.href="/get?id=GENERATED_" + data.fileName 
+        window.location.href="/preview?id=GENERATED_" + data.fileName 
       });
       function submitPostCode() {
         socket.emit('postCode', {'code':document.getElementById('postcode').value});

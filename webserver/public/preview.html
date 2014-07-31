@@ -6,6 +6,13 @@
 	<script type="text/javascript" src="assets/js/jsc3d.webgl.js"></script>
 	<script type="text/javascript" src="assets/js/jsc3d.3ds.js"></script>
 	<script type="text/javascript" src="assets/js/jsc3d.touch.js"></script>
+        <script>
+          function download() {
+            var downloadPage = "/download" + location.search;
+            window.location.href = downloadPage;
+          }
+          var file = "../generated/" + location.search.replace("?id=","") + ".stl";
+        </script>
   </head>
   <body>
     <h1>View of your area</h1>
@@ -18,14 +25,14 @@
 
 var canvas = document.getElementById('cv');
 var viewer = new JSC3D.Viewer(canvas);
-viewer.setParameter('SceneUrl', 'GENERATED.stl');
+viewer.setParameter('SceneUrl', file);
 viewer.setParameter('RenderMode', 'flat');
 viewer.init();
 viewer.update();
 
 </script>
-    <form action="/download" method="post"> 
-       <p><input type="submit" value="Download STL file"/></p>
+    <form onSubmit="return false"> 
+       <p><input onClick="download()" value="Download STL file"/></p>
      </form>
 
      <p><a href="index.html">Retry another area</a></p>

@@ -67,7 +67,12 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-app.get('/get', function(req, res) {
+app.get('/preview', function(req, res) {
+  var file = 'generated/' + req.param('id') + '.stl';
+  res.sendfile("public/preview.html");
+});
+
+app.get('/download', function(req, res) {
   // res.redirect('/get?id=GENERATED_' + gridCode); gridCode can't be accessed
   var file = 'generated/' + req.param('id') + '.stl';
 
