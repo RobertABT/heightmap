@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: stl-tools
+Version: 0.3.0
+Summary: Generate STL files from numpy arrays and text
+Home-page: https://github.com/thearn/stl_tools
+Author: Tristan Hearn
+Author-email: tristanhearn@gmail.com
+License: Apache 2.0
+Description: UNKNOWN
+Platform: UNKNOWN
