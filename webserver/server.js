@@ -1,10 +1,12 @@
 var express = require('express'),
         app = express(),
+       http = require('http'),
      server = require('http').createServer(app),
        exec = require('child_process').exec,
        path = require('path'),
        mime = require('mime'),
          fs = require('fs'),
+parseString = require('xml2js').parseString,
       child;
 
 server.listen(80);
@@ -19,6 +21,7 @@ app.configure(function () {
 app.post('/submit', function(req, res){
   var input = req.body.text.area;
   var api = "http://www.nearby.org.uk/api/convert.php?key=5103caf756c8b6&p=";
+  var gridCode;
 
   http.get(api + input, function(res){
     var body = '';
@@ -28,30 +31,27 @@ app.post('/submit', function(req, res){
     });
 
     res.on('end', function() {
-      // parseXML here
+      parseString(body, function (err, result) {
 
-
+        gridCode = result.convert.output[0].gr10[0].$.gr10;
+	gridCode = gridCode.replace(/ /g,'');
+	fs.exists('generated/GENERATED_' + gridCode + '.stl', function(exists) {
+	  if (!exists) {
+	    child = exec('cd python; python2 webstlwrite.py ' + gridCode, function(error, stdout, stderr) {
+	      if (error !== null) {
+		console.log('exec error: ' + error);
+	      }
+	    });
+	  }
+	});
+      });
     });
   }).on('error', function(e) {
     console.log("Got error: ", e);
   });
 
-  return
+  // res.redirect('/get?id=GENERATED_' + gridCode); gridCode can't be accessed
 
-
-  fs.exists('generated/GENERATED_' + input + '.stl', function(exists) {
-    if (exists) {
-      res.redirect('/get?id=GENERATED_' + req.body.text.area);
-    } else {
-      child = exec('cd python; python2 webstlwrite.py ' + input, function(error, stdout, stderr) {
-	if (error !== null) {
-	  console.log('exec error: ' + error);
-	}
-	res.redirect('/get?id=GENERATED_' + req.body.text.area);
-      });
-    }
-  });
-  
 });
 
 app.get('/get', function(req, res) {

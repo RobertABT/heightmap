@@ -9,10 +9,14 @@ class Region:
 
     #Reading files, retrieving integers and creating an array.
     def read (self, filename):
+        if filename is None:
+            print("Your Grid Reference format is incorrect for UK!")
+            return False
+
         try:
             file = open(filename,'r')
         except:
-            print("no such file")
+            print("No such Grid Reference in the UK!")
             return False
         a = file.readline().split()
         self.ncols = int(a[1])
@@ -31,20 +35,41 @@ class Region:
 
     #Retrieving files according to grid references.
     def readgr(self, gridsqr):
-        thepath = "data/"
-        thepath = thepath + gridsqr[0:3] + gridsqr[5] + ".asc"
-        self.read(thepath)
+        gridsqr = gridsqr.replace(" ","")
+        thepath = "data/" + gridsqr[0:3].upper()
+        if len(gridsqr) > 12:
+            thepath = None
+        
+        elif len(gridsqr) == 12:
+            thepath = thepath + gridsqr[7]
 
-    
+        elif len(gridsqr) == 10:
+            thepath = thepath + gridsqr[6]
+
+        elif len(gridsqr) == 8:
+            thepath = thepath + gridsqr[5]
+            
+        elif len(gridsqr) == 6:
+            thepath = thepath + gridsqr[4]
+            
+        elif len(gridsqr) == 4:
+            thepath = thepath + gridsqr[3]
+            
+        else:
+            thepath = None
+            
+        if thepath != None:
+            thepath = thepath + ".asc"
+            
+        self.read(thepath)
 
 
 if __name__ == "__main__":
     
     #Defining global variable.
     region = Region()
-
     #Users input
-    region.readgr("SN942935")
+    region.readgr("SN 58487 81915")
     
     #Printing values.
     print("------------")
