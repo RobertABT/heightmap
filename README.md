@@ -19,7 +19,11 @@ To add the .dbf files together we used this command:
     cat *.dbf | sed 's/os/\'$'\nos/g' | sed '/q/d' | sed '/^$/d' > test.whatever
 
 How to install modules:
+
 sudo apt-get python-pip
+
 sudo apt-get install matplotlib (contains pylab)
+
 sudo apt-get install mayavi2
+
 sudo pip install stl_tools
