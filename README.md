@@ -26,4 +26,4 @@ sudo apt-get install matplotlib (contains pylab)
 
 sudo apt-get install mayavi2
 
-sudo pip install stl_tools
+sudo pip install stl_tools (this can take a long time)
